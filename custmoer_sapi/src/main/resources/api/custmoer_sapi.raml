@@ -1,0 +1,36 @@
+#%RAML 1.0
+title: custmoer_sapi
+traits:
+  client-id-required:
+    headers:
+      client_id:
+        type: string
+      client_secret:
+        type: string
+    responses:
+      401:
+        description: Unauthorized or invalid client application credentials
+      500:
+        description: Bad response from authorization server, or WSDL SOAP Fault error
+/customer_sapi:
+  get:
+    is:
+      - client-id-required
+    description: fetch the data
+    queryParameters:
+      age:
+    responses:
+        200:
+          body:
+            application/json:
+              example: !include get responsefile.json
+                
+              
+              
+
+
+
+
+        
+                    
+
